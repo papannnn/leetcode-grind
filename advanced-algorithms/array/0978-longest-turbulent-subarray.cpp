@@ -1,7 +1,7 @@
 class Solution {
 public:
     int maxTurbulenceSize(vector<int>& arr) {
-        int res = 0;
+        int res = 1;
         
         int l = 0;
         while (l < arr.size() - 1) {
@@ -13,12 +13,8 @@ public:
 
             bool checkBig = arr[r - 1] < arr[r];
             int curr = 1;
-            cout << checkBig << " ";
-            cout << arr[r - 1] << " ";
             while (r < arr.size()) {
-                cout << arr[r] << " ";
                 if (checkBig) {
-                    
                     if (arr[r - 1] < arr[r]) {
                         curr++;
                         r++;
@@ -26,9 +22,7 @@ public:
                     } else {
                         break;
                     }
-
                 } else {
-                    
                     if (arr[r - 1] > arr[r]) {
                         curr++;
                         r++;
@@ -36,11 +30,10 @@ public:
                     } else {
                         break;
                     }
-                    
                 }
             }
-            cout << endl;
-            l = r;
+
+            l = r - 1;
             if (curr != 1) {
                 res = max(res, curr);
             }
